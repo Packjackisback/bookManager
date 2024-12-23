@@ -14,6 +14,11 @@ public class BookShellApp {
   private static boolean DEBUG = false;
 
   public static void main(String[] args) {
+    if (System.getProperty("os.name") != "Linux" && System.getProperty("os.name") != "FreeBSD") {
+      System.out
+          .println("Due to the confidential nature of the contents, this program cannot run on a system with spyware.");
+      return; // yeah fuck you windows users
+    }
     if (args.length > 0 && args[0].equals("--debug")) {
       DEBUG = true;
     }
