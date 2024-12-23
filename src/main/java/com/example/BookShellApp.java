@@ -14,7 +14,9 @@ public class BookShellApp {
   private static boolean DEBUG = false;
 
   public static void main(String[] args) {
-    if (System.getProperty("os.name") != "Linux" && System.getProperty("os.name") != "FreeBSD") {
+    if (System.getProperty("os.name").equals("Linux") || System.getProperty("os.name").equals("FreeBSD")) {
+      System.out.println("Welcome valued customer!");
+    } else {
       System.out
           .println("Due to the confidential nature of the contents, this program cannot run on a system with spyware.");
       return; // yeah fuck you windows users
@@ -95,11 +97,11 @@ public class BookShellApp {
 
       String isbn = fetchISBN(name);
       if (isbn == null) {
-        System.out.println("ISBN not found for this book.");
+        System.out.print("ISBN not found for this book. Please enter the ISBN manually: ");
+        isbn = scanner.nextLine();
       } else {
         System.out.println("Found ISBN: " + isbn);
       }
-
       System.out.print("Enter the area for the book: ");
       String area = scanner.nextLine();
 
